@@ -1,0 +1,61 @@
+@mixin display-items-flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin font-style-bold {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+@mixin font-grey {
+  color: #797979;
+}
+
+@mixin font-red {
+  color: #e50914;
+}
+
+@mixin logo-regular {
+  max-width: 20px;
+  margin-right: 5px;
+}
+
+header {
+  @include display-items-flex-center;
+  @include font-grey;
+  justify-content: space-between;
+  height: 70px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0px 10px;
+  background-color: #ffffffa7;
+  box-shadow: #eeeeee;
+}
+
+.logo {
+  @include display-items-flex-center();
+}
+.logo img {
+  @include logo-regular;
+}
+
+.navbar-logo {
+  @include font-style-bold;
+  @include font-grey;
+  cursor: pointer;
+}
+
+.navbar-button {
+  @include font-style-bold;
+  @include font-red;
+  cursor: pointer;
+  padding: 8px;
+  border: 2px solid #e50914;
+  border-radius: 20px;
+}
+
+.navbar-item {
+  @include font-style-bold;
+  @include font-style-bold;
+}

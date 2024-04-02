@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "task": "Give dog a bath"
+  },
+  {
+    "id": 2,
+    "task": "Do laundry"
+  },
+  {
+    "id": 3,
+    "task": "Vacuum floor"
+  },
+  {
+    "id": 4,
+    "task": "Feed cat"
+  },
+  {
+    "id": 5,
+    "task": "Change light bulbs"
+  },
+  {
+    "id": 6,
+    "task": "Go to Store"
+  },
+  {
+    "id": 7,
+    "task": "Fill gas tank"
+  },
+  {
+    "id": 8,
+    "task": "Change linens"
+  },
+  {
+    "id": 9,
+    "task": "Rake leaves"
+  },
+  {
+    "id": 10,
+    "task": "Bake Cookies"
+  }
+]
