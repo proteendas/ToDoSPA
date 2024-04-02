@@ -2,9 +2,9 @@ import "./ToDoComponent.scss";
 
 export const ToDoComponent = ({ todo, handleDelete }) => {
   return (
-    <div className="tasks">
+    <div className="task">
       <div>{todo.task}</div>
-      <button className="delete-button" onClick={() => handleDelete(todo.id)}>
+      <button className="task__deletebtn" onClick={() => handleDelete(todo.id)}>
         X
       </button>
     </div>

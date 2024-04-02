@@ -143,10 +143,10 @@ export const SignUp = () => {
       <div className="container__submitbtn" onClick={handleSignUp}>
         Sign Up
       </div>
-      <div className="signin-with">
+      <div className="container__continuewith">
         <span>Continue with:</span>
         <img
-          className="google-button"
+          className="container__googlebtn"
           src={google_icon}
           onClick={handleGoogleSignIn}
           alt="google-signup"

@@ -117,10 +117,10 @@ export const Login = () => {
       <div className="container__submitbtn" onClick={handleUserSignIn}>
         Login
       </div>
-      <div className="signin-with">
+      <div className="container__continuewith">
         <span>Login with:</span>
         <img
-          className="google-button"
+          className="container__googlebtn"
           src={google_icon}
           onClick={handleGoogleSignIn}
           alt="google-signup"

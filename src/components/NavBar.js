@@ -27,22 +27,22 @@ export const NavBar = () => {
   };
 
   return (
-    <header>
-      <div className="logo" onClick={routeChangeHome}>
+    <header className="navbar">
+      <div className="navbar__logo" onClick={routeChangeHome}>
         <img src={Logo} alt="ToDo" />
-        <span className="navbar-logo">ToDo</span>
+        <span className="navbar__logotext">ToDo</span>
       </div>
       {user ? (
-        <span className="navbar-item">Welcome, {user.displayName}</span>
+        <span className="navbar__item">Welcome, {user.displayName}</span>
       ) : (
         <div></div>
       )}
       {user ? (
-        <span className="navbar-button" onClick={handleSignOut}>
+        <span className="navbar__btn" onClick={handleSignOut}>
           Log Out
         </span>
       ) : (
-        <span className="navbar-button" onClick={routeChangeLogin}>
+        <span className="navbar__btn" onClick={routeChangeLogin}>
           Log In
         </span>
       )}

@@ -19,8 +19,8 @@ export const ToDoList = ({ toDoList, handleToggle, handleDelete }) => {
       {toDoList.map((todo) => {
         return <ToDoComponent todo={todo} handleDelete={handleDelete} />;
       })}
-      <Link className="text-link" to="/">
-        <button className="submit-button" onClick={handleSignOut}>
+      <Link className="logout" to="/">
+        <button className="container__submitbtn" onClick={handleSignOut}>
           Logout
         </button>
       </Link>

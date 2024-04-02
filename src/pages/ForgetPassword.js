@@ -17,18 +17,22 @@ export const ForgetPassword = () => {
 
   return (
     <div className="container">
-      <div className="header">
-        <div className="text">Reset Password</div>
-        <div className="underline"></div>
+      <div className="container__header">
+        <div className="container__text">Reset Password</div>
+        <div className="container__text--underline"></div>
       </div>
 
-      <div className="inputs">
-        <div className="input">
-          <img src={email_icon} className="icon" alt="email_icon" />
+      <div className="container__inputbox">
+        <div className="container__inputfield">
+          <img
+            src={email_icon}
+            className="container__inputfieldicon"
+            alt="email_icon"
+          />
           <input type="email" placeholder="Email ID" />
         </div>
       </div>
-      <div className="submit-button" onClick={routeChange}>
+      <div className="container__submitbtn" onClick={routeChange}>
         Reset
       </div>
     </div>

@@ -21,7 +21,7 @@
   margin-right: 5px;
 }
 
-header {
+.navbar {
   @include display-items-flex-center;
   @include font-grey;
   justify-content: space-between;
@@ -33,20 +33,20 @@ header {
   box-shadow: #eeeeee;
 }
 
-.logo {
+.navbar__logo {
   @include display-items-flex-center();
 }
-.logo img {
+.navbar__logo img {
   @include logo-regular;
 }
 
-.navbar-logo {
+.navbar__logotext {
   @include font-style-bold;
   @include font-grey;
   cursor: pointer;
 }
 
-.navbar-button {
+.navbar__btn {
   @include font-style-bold;
   @include font-red;
   cursor: pointer;
@@ -55,7 +55,7 @@ header {
   border-radius: 20px;
 }
 
-.navbar-item {
+.navbar__item {
   @include font-style-bold;
   @include font-style-bold;
 }

@@ -1,4 +1,4 @@
-.tasks {
+.task {
   margin: auto;
   padding-left: 25px;
   padding-right: 20px;
@@ -8,7 +8,7 @@
   justify-content: space-between;
 }
 
-.delete-button {
+.task__deletebtn {
   outline: none;
   border: none;
   color: #fff;

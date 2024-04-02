@@ -39,14 +39,18 @@ export const HomePage = () => {
 
   return (
     <div className="container">
-      <div className="header">
-        <div className="text">Task List</div>
-        <div className="underline"></div>
+      <div className="container__header">
+        <div className="container__text">Task List</div>
+        <div className="container__text--underline"></div>
       </div>
-      <div className="inputs">
-        <form className="task-input" onSubmit={handleSubmit}>
-          <div className="input">
-            <img src={task_icon} className="icon" alt="user_icon" />
+      <div className="container__inputbox">
+        <form className="container__taskinput" onSubmit={handleSubmit}>
+          <div className="container__inputfield">
+            <img
+              src={task_icon}
+              className="container__inputfieldicon"
+              alt="user_icon"
+            />
             <input
               type="text"
               value={userInput}
@@ -54,8 +58,12 @@ export const HomePage = () => {
               placeholder="Add Task"
             />
           </div>
-          <button className="task-add-button">
-            <img src={add_icon} className="icon" alt="user_icon" />
+          <button className="container__taskaddbtn">
+            <img
+              src={add_icon}
+              className="container__inputfieldicon"
+              alt="user_icon"
+            />
           </button>
         </form>
       </div>
