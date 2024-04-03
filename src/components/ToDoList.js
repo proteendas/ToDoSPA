@@ -3,7 +3,7 @@ import { ToDoComponent } from "../components/ToDoComponent";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-export const ToDoList = ({ toDoList, handleToggle, handleDelete }) => {
+export const ToDoList = ({ toDoList, toggleComplete, handleDelete }) => {
   const { logOut } = UserAuth();
 
   const handleSignOut = async () => {
@@ -17,7 +17,13 @@ export const ToDoList = ({ toDoList, handleToggle, handleDelete }) => {
   return (
     <div>
       {toDoList.map((todo) => {
-        return <ToDoComponent todo={todo} handleDelete={handleDelete} />;
+        return (
+          <ToDoComponent
+            todo={todo}
+            toggleComplete={toggleComplete}
+            handleDelete={handleDelete}
+          />
+        );
       })}
       <Link className="logout" to="/">
         <button className="container__submitbtn" onClick={handleSignOut}>

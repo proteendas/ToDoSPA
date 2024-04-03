@@ -98,7 +98,7 @@ export const Login = () => {
             className="container__inputfieldicon"
             alt="email_icon"
           />
-          <input type="email" placeholder="Email ID" onClick={getEmail} />
+          <input type="email" placeholder="Email ID" onChange={getEmail} />
         </div>
         <div className="container__inputfield">
           <img
@@ -106,7 +106,11 @@ export const Login = () => {
             className="container__inputfieldicon"
             alt="password_icon"
           />
-          <input type="password" placeholder="Password" onClick={getPassword} />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={getPassword}
+          />
         </div>
       </div>
 

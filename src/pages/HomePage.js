@@ -2,39 +2,64 @@ import "./Login.scss";
 
 import task_icon from "../components/assets/task.png";
 import add_icon from "../components/assets/add-post.png";
-import data from "../components/data.json";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTitle } from "../hooks/useTitle";
 import { ToDoList } from "../components/ToDoList";
+
+import { db } from "../firebase";
+import {
+  collection,
+  query,
+  onSnapshot,
+  doc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 export const HomePage = () => {
   useTitle("Home");
 
-  const [toDoList, setToDoList] = useState(data);
-  const [userInput, setUserInput] = useState("");
+  const [toDoList, setToDoList] = useState([]);
+  const [task, setTask] = useState("");
+
+  useEffect(() => {
+    const q = query(collection(db, "todo-list"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let todoArray = [];
+      querySnapshot.forEach((doc) => {
+        todoArray.push({ ...doc.data(), id: doc.id });
+      });
+      setToDoList(todoArray);
+    });
+    return () => unsub();
+  }, []);
+
+  const toggleComplete = async (todo) => {
+    await updateDoc(doc(db, "todo-list", todo.id), {
+      completed: !todo.completed,
+    });
+  };
+
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "todo-list", id));
+  };
 
   const handleChange = (e) => {
-    setUserInput(e.currentTarget.value);
-  };
-
-  const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(userInput);
-    setUserInput("");
+    setTask(e.target.value);
   };
 
-  const addTask = (userInput) => {
-    let copy = [...toDoList];
-    copy = [
-      ...copy,
-      { id: toDoList.length + 1, task: userInput, complete: false },
-    ];
-    if (userInput !== "") setToDoList(copy);
-  };
-
-  const handleDelete = (id) => {
-    setToDoList(toDoList.filter((task) => task.id !== id));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (task !== "") {
+      await addDoc(collection(db, "todo-list"), {
+        task,
+        completed: false,
+      });
+      setTask("");
+    }
   };
 
   return (
@@ -53,7 +78,7 @@ export const HomePage = () => {
             />
             <input
               type="text"
-              value={userInput}
+              value={task}
               onChange={handleChange}
               placeholder="Add Task"
             />
@@ -67,7 +92,11 @@ export const HomePage = () => {
           </button>
         </form>
       </div>
-      <ToDoList toDoList={toDoList} handleDelete={handleDelete} />
+      <ToDoList
+        toDoList={toDoList}
+        toggleComplete={toggleComplete}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };

@@ -1,11 +1,19 @@
-.task {
+.task__container {
   margin: auto;
-  padding-left: 25px;
-  padding-right: 20px;
-  font-weight: 500;
-  color: #797979;
+  padding-left: 35px;
+  padding-right: 15px;
   display: flex;
   justify-content: space-between;
+}
+
+.task {
+  font-weight: 500;
+  color: #797979;
+  cursor: pointer;
+}
+
+.task--completed {
+  text-decoration: line-through;
 }
 
 .task__deletebtn {
