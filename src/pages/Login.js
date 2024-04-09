@@ -9,6 +9,7 @@ import { useTitle } from "../hooks/useTitle";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { NavBar } from "../components/NavBar";
 
 export const Login = () => {
   useTitle(`Login`);
@@ -19,27 +20,27 @@ export const Login = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
-  const routeChangeSignUp = () => {
+  const routeChangeSignUp = async () => {
     let path = "/SignUp";
     navigate(path);
   };
 
-  const routeChangeLogin = () => {
+  const routeChangeLogin = async () => {
     let path = "/";
     navigate(path);
   };
 
-  const routeChangeHome = () => {
+  const routeChangeHome = async () => {
     let path = "/Home";
     navigate(path);
   };
 
-  const routeChangeReset = () => {
+  const routeChangeReset = async () => {
     let path = "/Reset";
     navigate(path);
   };
 
-  const { googleSignIn, user } = UserAuth();
+  const { googleSignIn } = UserAuth();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -58,12 +59,19 @@ export const Login = () => {
     setPassword(data.target.value);
   };
 
+  const isEmail = (email) =>
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+
   const handleUserSignIn = async () => {
+    const msg = isEmail(email) ? null : "Please enter a valid email";
+
+    if (msg !== null) alert(msg);
+
     try {
       signInWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          // const user = userCredential.user;
           routeChangeHome();
         }
       );
@@ -75,61 +83,66 @@ export const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="container__header">
-        <div className="container__text">Login</div>
-        <div className="container__text--underline"></div>
-      </div>
-      <div className="container__submit">
-        <div
-          className="container__tab container__tab--inactive"
-          onClick={routeChangeSignUp}
-        >
-          Sign Up
-        </div>
-        <div className="container__tab" onClick={routeChangeLogin}>
-          Login
-        </div>
-      </div>
-      <div className="container__inputbox">
-        <div className="container__inputfield">
-          <img
-            src={email_icon}
-            className="container__inputfieldicon"
-            alt="email_icon"
-          />
-          <input type="email" placeholder="Email ID" onChange={getEmail} />
-        </div>
-        <div className="container__inputfield">
-          <img
-            src={password_icon}
-            className="container__inputfieldicon"
-            alt="password_icon"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={getPassword}
-          />
-        </div>
-      </div>
+    <>
+      <div className="login">
+        <NavBar />
+        <div className="container">
+          <div className="container__header">
+            <div className="container__text">Login</div>
+            <div className="container__text--underline"></div>
+          </div>
+          <div className="container__submit">
+            <div
+              className="container__tab container__tab--inactive"
+              onClick={routeChangeSignUp}
+            >
+              Sign Up
+            </div>
+            <div className="container__tab" onClick={routeChangeLogin}>
+              Login
+            </div>
+          </div>
+          <div className="container__inputbox">
+            <div className="container__inputfield">
+              <img
+                src={email_icon}
+                className="container__inputfieldicon"
+                alt="email_icon"
+              />
+              <input type="email" placeholder="Email ID" onChange={getEmail} />
+            </div>
+            <div className="container__inputfield">
+              <img
+                src={password_icon}
+                className="container__inputfieldicon"
+                alt="password_icon"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={getPassword}
+              />
+            </div>
+          </div>
 
-      <div className="container__redirecttext">
-        Forget Password? <span onClick={routeChangeReset}>Click Here!</span>
-      </div>
+          <div className="container__redirecttext">
+            Forget Password? <span onClick={routeChangeReset}>Click Here!</span>
+          </div>
 
-      <div className="container__submitbtn" onClick={handleUserSignIn}>
-        Login
+          <div className="container__submitbtn" onClick={handleUserSignIn}>
+            Login
+          </div>
+          <div className="container__continuewith">
+            <span>Login with:</span>
+            <img
+              className="container__googlebtn"
+              src={google_icon}
+              onClick={handleGoogleSignIn}
+              alt="google-signup"
+            />
+          </div>
+        </div>
       </div>
-      <div className="container__continuewith">
-        <span>Login with:</span>
-        <img
-          className="container__googlebtn"
-          src={google_icon}
-          onClick={handleGoogleSignIn}
-          alt="google-signup"
-        />
-      </div>
-    </div>
+    </>
   );
 };

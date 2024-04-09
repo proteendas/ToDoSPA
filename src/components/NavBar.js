@@ -33,7 +33,7 @@ export const NavBar = () => {
         <span className="navbar__logotext">ToDo</span>
       </div>
       {user ? (
-        <span className="navbar__item">Welcome, {user.displayName}</span>
+        <span className="navbar__item">Welcome {user.displayName}!</span>
       ) : (
         <div></div>
       )}
